@@ -1,0 +1,97 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="project padding-inline">
+    <div class="project__description">
+        <div>
+            <h2 class="project__title">Glamora</h2>
+            <p> A sleek and responsive beauty shopping site built with modern front-end technologies. Showcasing intuitive UI, smooth animations, and a seamless shopping experience.</p>
+        </div>
+
+        <button class="project__button" title="live project">
+            <Icon name="arrow-outline"/>
+        </button>
+    </div>
+
+    <div class="project__image">
+        <img src="../../public/images/testing.jpg" alt="Project 1"/>
+    </div>
+</div>
+
+<div class="project project__reverse padding-inline">
+    <div class="project__description">
+        <div>
+            <h2 class="project__title">Shortify – A Simple URL Shortener</h2>
+            <p>TinyLink is a lightweight and efficient URL shortener built with pure front-end technologies. It allows users to quickly shorten long URLs for  with a user-friendly interface.</p>
+        </div>
+
+        <button class="project__button" title="live project">
+            <Icon name="arrow-outline"/>
+        </button>
+    </div>
+
+    <div class="project__image">
+        <img src="../../public/images/testing.jpg" alt="Project 1"/>
+    </div>
+</div>
+
+
+
+<style>
+    .project {
+        padding-block: 5rem;
+        font-size: 2rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        border-bottom: 1px solid #000;
+    }
+
+    @media (min-width: 768px) {
+        .project {
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .project__reverse {
+            flex-direction: row-reverse;
+        }
+    }
+
+
+
+    .project__title {
+        padding-bottom: 2rem;
+    }
+
+    .project__button {
+        font-size: 3rem;
+        border: 1px solid #000;
+        border-radius: 2rem;
+        padding: 1rem 3rem;
+        display: flex;
+        align-items: center;
+        margin-top: 2rem;
+        //width: 100%;
+
+        transition: all .3s;
+    }
+
+    .project__button svg {
+        transform: rotate(90deg);
+        display: inline-block;
+        margin: 0 auto;
+    }
+
+    .project__button:hover {
+        cursor: pointer;
+        background-color: #000;
+        color: #fff;
+        transform: scale(1.2);
+    }
+</style>

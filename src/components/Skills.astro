@@ -1,0 +1,71 @@
+---
+
+import { Icon } from "astro-icon/components";
+import Button from "./Button.astro";
+import Skill from "./Skill.astro";---
+<section class="skills section padding-inline" id="skills">
+    <div class="skills__title">
+        <h2 class="skills__heading">My Front-End Toolbox</h2>
+
+        <Button/>
+    </div>
+
+    <div class="skills__container">
+        <Skill title="Core Front-End Skills" items={[
+            "Proficient in crafting accessible HTML",
+            "Experienced with modern CSS (Flexbox, Grid)",
+            "Skilled in JavaScript for interactive UIs"
+        ]}>
+            <Icon name="icon1" />
+        </Skill>
+
+        <Skill title="Frameworks and Tools" items={[
+            "Hands-on experience with front-end frameworks like React or Astro",
+            "Familiar with CSS libraries and preprocessors (Sass, Tailwind CSS).",
+            "Comfortable with version control using Git and GitHub.",
+            "Experience using build tools like Vite, Webpack, or Parcel"
+        ]}>
+            <Icon name="icon2" />
+        </Skill>
+        <Skill title="SEO Optimization" items={[
+            "Skilled at transforming website layouts into SEO-friendly, responsive designs.",
+            "Strong understanding of SEO principles, including keyword integration, meta tags, and structured data.",
+            "Focused on creating user-centric, mobile-first designs that enhance search engine rankings."
+        ]}>
+            <Icon name="icon3" />
+        </Skill>
+    </div>
+</section>
+
+<style>
+    .skills {
+        border-bottom: 1px solid #000;
+    }
+    .skills__title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .skills__heading {
+        font-size:3.5rem;
+       font-weight: 800;
+    }
+
+    .skills__container {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+          margin-top: 2rem;
+    }
+
+    @media (min-width: 768px)
+    {
+        .skills__container {
+            flex-direction: row;
+        }
+    }
+
+    .skills__container svg {
+        font-size: 8rem;
+    }
+</style>

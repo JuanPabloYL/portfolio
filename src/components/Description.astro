@@ -1,0 +1,72 @@
+---
+import IconContainer from "./IconContainer.astro";
+---
+
+<section class="introduction padding-inline section" id="introduction">
+    <h2 class="introduction__title">Hi, I'm 👋 <span>Juan Pablo</span></h2>
+
+    <p class="introduction__text">I'm a passionate <span>front-end developer</span> with a strong foundation in <span>HTML, CSS, and JavaScript</span>. I love creating clean, responsive designs and am eager to bring creative solutions to real-world projects as I grow my skills.</p>
+
+    <div class="introduction__contact">
+        <p>Contact me</p>
+
+        <div>
+            <a href="https://github.com/JuanPabloYL" target="_blank">
+                <IconContainer class="introduction__icon" name="github"/>
+            </a>
+            <a href="https://www.linkedin.com/in/juanpabloyague/" target="_blank">
+                <IconContainer class="introduction__icon" name="linkedin"/>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .introduction {
+        padding-block: 12rem;
+
+        border-bottom: 1px solid #000;
+    }
+
+    .introduction__title {
+        text-transform: uppercase;
+        font-size: 5rem;
+        color: #868686;
+        font-weight: 500;
+    }
+
+    .introduction__title span {
+        text-transform: capitalize;
+        font-size: 4rem;
+        display: block;
+        color: #000;
+        font-weight: 700;
+    }
+
+    .introduction__text {
+        font-size: 3rem;
+        line-height: 2;
+    }
+
+    .introduction__text span {
+        font-style: italic;
+        color: #868686;
+        border-bottom: 2px solid #2660FE;
+    }
+
+    .introduction__contact {
+        padding-top: 3.5rem;
+    }
+
+    .introduction__contact p {
+        font-size: 2rem;
+        font-weight: bold;
+        padding-bottom: 1rem;
+    }
+    .introduction__contact div {
+        font-size: 5rem;
+        display: flex;
+    }
+
+
+</style>

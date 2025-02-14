@@ -1,0 +1,25 @@
+---
+
+const currentYear = new Date().getFullYear();
+
+---
+<footer class="footer padding-inline">
+    <p>&copy; {currentYear} All Rights Reserved.</p>
+    <div>
+        <a href="https://github.com/JuanPabloYL" target="_blank">GitHub</a>
+        <span>/</span>
+        <a href="https://www.linkedin.com/in/juanpabloyague/" target="_blank">LinkedIn</a>
+    </div>
+</footer>
+
+<style>
+    .footer {
+        padding-block: 2rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .footer a {
+        font-weight: bold;
+    }
+</style>

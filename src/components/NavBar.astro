@@ -1,0 +1,259 @@
+---
+import { Icon } from "astro-icon/components";
+// import { intersectionObserver } from "../scripts/intersectionObserver.js";
+import Button from "./Button.astro";
+---
+<header>
+<nav class="navigation">
+  <div class="navigation__logo">
+    <a class="logo-font">Juan Pablo Yague</a>
+  </div>
+
+  <button class="navigation__icon">
+    <Icon data-open name="burguer-classic" />
+    <Icon data-close class="hidden" name="cross" />
+  </button>
+
+  <div class="navigation__links">
+    <a href="#home" id="home">Home</a>
+    <a href="#about" id="about">About</a>
+    <a href="#skills" id="skills-btn">Skills</a>
+    <a href="#projects" id="projects">Projects</a>
+    <!--<a href="#">Contact</a>-->
+  </div>
+
+  <div id="contact">
+    <a class="navigation__contact" href="#"
+      >Let's talk <span
+        ><Icon class="navigation__arrow" name="arrow-outline" /></span
+      >
+    </a>
+  </div>
+</nav>
+</header>
+
+
+<style>
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    //position: relative;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: -2rem;
+    right: -2rem;
+    background-color: #fff;
+    padding: 2rem;
+    padding-block: 2rem;
+
+    transition: all .2s;
+  }
+
+  .navigation.observer, .navigation.observer .navigation__links {
+    background-color: #2360fb;
+    color: #fff;
+  }
+
+  .navigation.observer svg{
+    color: #fff;
+  }
+
+  @media  (min-width: 768px) {
+    .navigation.observer  .navigation__links a:hover {
+      border-bottom: 2px solid #fff;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .navigation {
+      padding-top: 2rem;
+      margin-inline: 2rem;
+    }
+  }
+
+  .navigation__logo {
+    //margin-top: 3rem;
+    padding-left: 1rem;
+    z-index: 1;
+  }
+  @media (min-width: 768px) {
+    .navigation__logo {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .navigation__icon {
+    //position: fixed;
+    //right: 0;
+    //top: 3rem;
+    font-size: 3rem;
+
+    z-index: 100;
+  }
+
+  .navigation__icon:hover {
+    cursor: pointer;
+  }
+
+  .navigation__icon svg.hidden {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .navigation__icon {
+      display: none;
+    }
+  }
+
+  .navigation__links {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 20rem;
+
+    padding-left: 2rem;
+    padding-top: 6rem;
+    font-size: 2rem;
+    font-weight: bold;
+    transform: translateX(100%);
+    transition: transform 0.3s;
+    z-index: 10;
+    background-color: #fff;
+  }
+
+  .navigation__links.active {
+    transform: translateX(0);
+  }
+
+  @media (min-width: 768px) {
+    .navigation__links {
+      position: static;
+      height: auto;
+      box-shadow: none;
+      flex-direction: row;
+      padding: 0;
+      font-size: 2Erem;
+      transform: translateX(0);
+    }
+    .navigation__links a {
+      border-bottom: 2px solid transparent;
+      transition: border-bottom 0.3s;
+    }
+
+    .navigation__links a:hover {
+      border-bottom: 2px solid #2360fb;
+    }
+  }
+
+  .navigation__arrow {
+    transform: rotate(90deg);
+  }
+
+  .navigation__contact {
+    display: none;
+  }
+
+  #contact {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    #contact {
+      display: block;
+    }
+    .navigation__contact {
+      display: inline-block;
+      border: 2px solid #000;
+      padding-inline: 2rem;
+      padding-block: 0.5rem;
+
+      transition: all 0.3s;
+    }
+    .navigation__contact:hover {
+      background-color: #000;
+      color: #fff;
+      transform: scale(1.1);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.querySelector(".navigation__icon");
+    const aboutBtn = document.querySelector("#about")!;
+    const skillsBtn = document.querySelector("#skills-btn")!;
+    const projectsBtn = document.querySelector("#projects")!;
+    const homeBtn = document.querySelector("#home")!;
+    const navigation = document.querySelector(".navigation");
+
+    const toggleNav = () => {
+      document.querySelector("[data-open]")?.classList.toggle("hidden");
+      document.querySelector("[data-close]")?.classList.toggle("hidden");
+      document.querySelector(".navigation__links")?.classList.toggle("active");
+    }
+
+    aboutBtn.addEventListener("click", (e) => {
+      const aboutSection = document.querySelector("#introduction")!;
+
+        aboutSection.scrollIntoView({ behavior: "smooth" });
+
+        toggleNav();
+    })
+
+    homeBtn.addEventListener("click", (e) => {
+      const container = document.querySelector(".container")!;
+
+      container.scrollIntoView({ behavior: "smooth" });
+
+      toggleNav();
+    })
+
+    projectsBtn.addEventListener("click", (e) => {
+      const projectsSection = document.querySelector("#callout")!;
+
+      projectsSection.scrollIntoView({behavior: "smooth"});
+      toggleNav();
+    })
+
+    skillsBtn.addEventListener("click", (e) => {
+      const skillsSection = document.querySelector("#skills")!;
+
+      skillsSection.scrollIntoView({behavior: "smooth"});
+      toggleNav()
+    })
+
+    btn?.addEventListener("click", () => {
+      toggleNav();
+    });
+    const container = document.querySelector("header")!
+    const sectionOptions = {};
+    const observer = new IntersectionObserver(((entries,sectionObserver)=> {
+      entries.forEach(entry => {
+        if(!entry.isIntersecting) {
+          navigation.classList.add("observer")
+        } else {
+          navigation.classList.remove("observer")
+        }
+        console.log(entry.isIntersecting);
+      })
+    }), sectionOptions);
+    observer.observe(container);
+    //
+    // const nav = document.querySelector('nav')!;
+    // const observer = new IntersectionObserver((entries) => {
+    //   entries.forEach(entry => {
+    //     console.log(entry)
+    //   })
+    // })
+    //
+    // observer.observe(nav);
+  });
+</script>

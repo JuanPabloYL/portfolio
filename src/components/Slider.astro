@@ -1,0 +1,74 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<section class="logos section">
+    <div class="logos-slide">
+        <Icon class="logo-slide" name="react"/>
+        <Icon class="logo-slide" name="astro"/>
+        <Icon class="logo-slide" name="javascript"/>
+        <Icon class="logo-slide" name="typescript"/>
+        <Icon class="logo-slide" name="css"/>
+        <Icon class="logo-slide" name="scss"/>
+        <Icon class="logo-slide" name="webpack"/>
+    </div>
+    <div class="logos-slide">
+        <Icon class="logo-slide" name="react"/>
+        <Icon class="logo-slide" name="astro"/>
+        <Icon class="logo-slide" name="javascript"/>
+        <Icon class="logo-slide" name="typescript"/>
+        <Icon class="logo-slide" name="css"/>
+        <Icon class="logo-slide" name="scss"/>
+        <Icon class="logo-slide" name="webpack"/>
+    </div>
+</section>
+
+<style>
+    .logos {
+        overflow: hidden;
+        background-color: #f1f3f5;
+        display: flex;
+        gap: 2rem;
+        border-bottom: 1px solid #000;
+        position: relative;
+        //width: 100vw;
+    }
+
+    .logos-slide {
+        white-space: nowrap;
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+        animation: slide 35s linear infinite;
+        width: max-content; /* Ensure it stretches beyond 100% */
+    }
+
+    .logo-slide {
+        font-size: 4rem;
+    }
+
+    /* Ensure the animation works smoothly on larger screens */
+    @media (min-width: 768px) {
+        .logos {
+            gap: normal;
+        }
+        .logo-slide {
+            font-size: 8rem;
+        }
+        .logos-slide {
+            gap: 6rem;
+        }
+    }
+
+    /* Seamless scrolling effect */
+    @keyframes slide {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+</style>

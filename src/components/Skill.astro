@@ -1,0 +1,56 @@
+---
+// Props passed to the Skill component
+// title: Title of the card (e.g., "Core Front-End Skills")
+// items: An array of strings, each representing a skill point
+import { Icon } from "astro-icon/components";
+
+const { title, items } = Astro.props;
+---
+
+<div class="skill">
+    <div class="skill__icon">
+        <slot />
+    </div>
+    <h3 class="skill__title">{title}</h3>
+    <ul class="skill__list">
+        {items.map((item) => (
+                <li class="">
+                    <Icon name="check" />
+                    {item}
+                </li>
+        ))}
+    </ul>
+</div>
+
+<style>
+    .skill {
+        background-color: #C6D8F7;
+        border-radius: 10px;
+        padding: 3rem;
+        flex: 1;
+        transition: all .3s ease-in-out;
+    }
+
+    @media (min-width: 768px) {
+        .skill:hover {
+            transform: scale(1.07);
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+    }
+
+    .skill__icon {
+    }
+
+    .skill__title {
+        font-size: 2.4rem;
+        margin-block: 2rem;
+        font-weight: 800;
+    }
+
+    .skill__list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.8rem;
+        font-weight: 500;
+    }
+</style>

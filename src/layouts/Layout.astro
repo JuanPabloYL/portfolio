@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&family=Smooch+Sans:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>Juan Pablo Yague</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: "Onest Variable", system-ui, sans-serif;
+    font-size: 62.5%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    font-size: 1.5rem;
+    padding: 0;
+    margin: 0;
+    position: relative;
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
+  }
+
+  a:link,
+  a:visited {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:active {
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  ul li {
+    list-style: none;
+
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  .logo-font {
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: "Smooch Sans", serif;
+  }
+
+  .logo-font:hover {
+    cursor: pointer;
+  }
+
+  .padding-inline {
+    padding-inline: 4rem;
+  }
+
+  .section {
+    padding-block: 5rem;
+  }
+</style>

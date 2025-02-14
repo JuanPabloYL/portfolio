@@ -1,0 +1,75 @@
+---
+
+import { Icon } from "astro-icon/components";
+import IconContainer from "./IconContainer.astro";
+
+---
+<section class="callout padding-inline" id="callout">
+    <div>
+        <h2 class="callout__title">Explore my top projects <span class="callout__icon"><Icon name="flow-arrow"/></span></h2>
+    </div>
+
+    <a href="https://github.com/JuanPabloYL" target="_blank" class="callout__link">
+        Explore All
+        <span class="callout__arrow">
+            <Icon name="arrow-outline"/>
+        </span>
+    </a>
+
+</section>
+
+<style>
+    .callout {
+        padding-block: 5rem;
+        border-bottom: 1px solid #000;
+    }
+    @media  (min-width: 768px) {
+        .callout {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    .callout__title {
+        font-size: 6rem;
+        text-transform: capitalize;
+        font-weight: 500;
+    }
+
+
+    .callout__icon  {
+        display: inline-block;
+        transform: rotate(60deg) translateX(50%);
+    }
+
+    .callout__link {
+        display: none;
+    }
+
+    @media (min-width: 768px) {
+        .callout__link {
+            display: inline-block;
+            background-color: #2660FE;
+            color: #fff;
+            padding: 1rem 1rem;
+            font-size: 1.8rem;
+            transition: transform .3s;
+        }
+        .callout__link:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+
+
+        .callout__arrow {
+            display: inline-block;
+            transform: rotate(90deg);
+        }
+
+        .callout__title {
+            font-size: 6rem;
+            width: 70%;
+        }
+    }
+</style>

@@ -1,0 +1,17 @@
+---
+import {Icon} from "astro-icon/components";
+const {name} = Astro.props;
+
+---
+<div class="icon">
+    <Icon name={name}></Icon>
+</div>
+
+<style>
+    .icon {
+        transition: transform .3s;
+    }
+    .icon:hover {
+        transform: scale(1.1);
+    }
+</style>
