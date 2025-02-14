@@ -1,34 +1,154 @@
 ---
+import { Icon } from "astro-icon/components";
 
 ---
-<div class="form-container">
+<div class="form-container hidden">
     <form class="form">
         <div class="form__img">
             <img src="../../public/images/person-glasses.jpg"/>
         </div>
         <div class="form__info">
-            <h2 class="form__title">Contact me!</h2>
+            <div class="form__info__title">
+                <h2 class="form__title">Contact me!</h2>
+                <Icon id="close-form" name="cross"/>
+            </div>
+
             <div class="form__names">
                 <input placeholder="First name" type="text" />
                 <input placeholder="Last name" type="text"  />
             </div>
             <div class="form__inputs">
                 <input placeholder="Email" type="email" />
-                <textarea></textarea>
+            </div>
+            <div class="form__inputs">
+                <textarea placeholder="Your message..."></textarea>
             </div>
             <input type="submit" value="Submit"  class="form__submit"/>
         </div>
+
     </form>
 </div>
 
 <style>
     .form-container {
-        position: absolute;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        background: rgb(0 0 0 / .65);
         display: grid;
         place-items: center;
+    }
+    .form-container.hidden {
+        display: none;
     }
 
     .form {
         display: flex;
+        padding: 2rem;
+        background: #2660FE;
+        color: #fff;
+        border-radius: 1rem;
+        align-items: center;
     }
+
+    @media (min-width: 768px) {
+        .form {
+            width: 60%;
+            gap: 2rem;
+            //align-items: center;
+        }
+    }
+
+    .form input, .form textarea {
+        border: none;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+
+    .form textarea {
+        font-family: inherit;
+    }
+
+
+    .form input:focus, .form textarea:focus  {
+        outline: 2px solid #fff;
+    }
+
+    @media (min-width: 768px) {
+        .form__info {
+            flex: 1;
+        }
+    }
+
+    .form__info__title {
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+    }
+
+    .form__info__title svg{
+        font-size: 2.5rem;
+    }
+
+    .form__img {
+        display: none;
+    }
+
+    @media (min-width: 768px) {
+        .form__img {
+            display: inline-block;
+            //width: 20rem;
+            flex: 1;
+        }
+
+        .form__img img {
+            border-radius: 1rem;
+        }
+    }
+
+    .form__names {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .form__inputs {
+        margin-top: 2rem;
+    }
+    .form__inputs input, .form__inputs textarea {
+        width: 100%;
+    }
+
+    .form__inputs textarea {
+        margin-bottom: 2rem;
+    }
+
+    .form__submit {
+        width: 100%;
+        background: #fff;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 1.5rem;
+        transition: all .5s;
+    }
+
+    .form__submit:hover {
+        background: #000;
+        color: #fff;
+    }
+
+
 </style>
+
+<script>
+    import {toggleForm} from "../scripts/toggleForm";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const closeIcon = document.getElementById("close-form")!;
+
+        closeIcon.addEventListener("click",toggleForm);
+    })
+</script>

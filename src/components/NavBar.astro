@@ -1,7 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-// import { intersectionObserver } from "../scripts/intersectionObserver.js";
-import Button from "./Button.astro";
+
 ---
 <header>
 <nav class="navigation">
@@ -23,7 +22,7 @@ import Button from "./Button.astro";
   </div>
 
   <div id="contact">
-    <a class="navigation__contact" href="#"
+    <a class="navigation__contact" id="contact" href="#"
       >Let's talk <span
         ><Icon class="navigation__arrow" name="arrow-outline" /></span
       >
@@ -186,6 +185,7 @@ import Button from "./Button.astro";
 </style>
 
 <script>
+  import {toggleForm} from "../scripts/toggleForm";
   document.addEventListener("DOMContentLoaded", () => {
     const btn = document.querySelector(".navigation__icon");
     const aboutBtn = document.querySelector("#about")!;
@@ -246,14 +246,10 @@ import Button from "./Button.astro";
       })
     }), sectionOptions);
     observer.observe(container);
-    //
-    // const nav = document.querySelector('nav')!;
-    // const observer = new IntersectionObserver((entries) => {
-    //   entries.forEach(entry => {
-    //     console.log(entry)
-    //   })
-    // })
-    //
-    // observer.observe(nav);
+
+    const letsTalk = document.querySelector("#contact")!;
+
+
+    letsTalk.addEventListener("click",toggleForm);
   });
 </script>
