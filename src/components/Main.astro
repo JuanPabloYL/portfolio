@@ -6,7 +6,7 @@ import { Icon } from "astro-icon/components";
   <div class="main__intro">
     <h1>Hi, I'm a <span class="main__span">Front-end</span> Developer</h1>
 
-    <button class="main__arrow" id="contact">
+    <button class="main__arrow" id="contact-btn">
       Let's talk
       <Icon  name="arrow-outline" />
     </button>
@@ -106,3 +106,14 @@ import { Icon } from "astro-icon/components";
     transform: scale(1.1);
   }
 </style>
+
+
+<script>
+  import { toggleForm } from "../scripts/toggleForm";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const openForm = document.querySelector("#contact-btn")!;
+
+    openForm.addEventListener("click", toggleForm);
+  })
+</script>

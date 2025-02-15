@@ -3,7 +3,7 @@ import { Icon } from "astro-icon/components";
 
 ---
 <div class="form-container hidden">
-    <form class="form">
+    <form class="form" action="https://formsubmit.co/juanpabloyague@gmail.com" method="POST">
         <div class="form__img">
             <img src="../../public/images/person-glasses.jpg"/>
         </div>
@@ -14,22 +14,35 @@ import { Icon } from "astro-icon/components";
             </div>
 
             <div class="form__names">
-                <input placeholder="First name" type="text" />
-                <input placeholder="Last name" type="text"  />
+                <input placeholder="First name" type="text" id="first-name" />
+                <input placeholder="Last name" id="last-name" type="text"  />
             </div>
             <div class="form__inputs">
-                <input placeholder="Email" type="email" />
+                <input placeholder="Email" id="email"  type="email" />
             </div>
             <div class="form__inputs">
-                <textarea placeholder="Your message..."></textarea>
+                <textarea placeholder="Your message..." id="message"></textarea>
             </div>
             <input type="submit" value="Submit"  class="form__submit"/>
+            <div class="alert" id="alert-message">
+                Please enter a valid email address.
+            </div>
         </div>
+
+
 
     </form>
 </div>
 
 <style>
+    .alert {
+        background-color: #DC143C;
+        padding: 1rem 2rem;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 2rem;
+        display: none;
+    }
     .form-container {
         position: fixed;
         top: 0;
@@ -144,11 +157,44 @@ import { Icon } from "astro-icon/components";
 </style>
 
 <script>
-    import {toggleForm} from "../scripts/toggleForm";
+    import { toggleForm } from "../scripts/toggleForm";
 
     document.addEventListener("DOMContentLoaded", () => {
         const closeIcon = document.getElementById("close-form")!;
+        closeIcon.addEventListener("click", toggleForm);
+        const form = document.querySelector("form") as HTMLFormElement;
+        const alertMessage = document.getElementById("alert-message")as HTMLDivElement;
 
-        closeIcon.addEventListener("click",toggleForm);
-    })
+        const  validateForm = (event: SubmitEvent): boolean => {
+            const firstName = (document.getElementById("first-name") as HTMLInputElement).value;
+            const lastName = (document.getElementById("last-name") as HTMLInputElement).value;
+            const email = (document.getElementById("email") as HTMLInputElement).value;
+            const message = (document.getElementById("message") as HTMLTextAreaElement).value;
+
+            if (!firstName || !lastName || !email || !message) {
+                alertMessage.textContent = "Please fill out all fields.";
+                alertMessage.style.display = "block"; // Show the alert
+                event.preventDefault();
+                return false;
+            }
+
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                alertMessage.textContent = "Please enter a valid email address.";
+                alertMessage.style.display = "block"; // Show the alert
+                event.preventDefault();
+                return false;
+            }
+
+            form.reset();
+            toggleForm();
+            return true;
+        }
+
+        form.addEventListener("submit", validateForm);
+    });
+
+
+
+
 </script>
